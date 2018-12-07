@@ -34,7 +34,7 @@ class App extends Component {
           </Header>
           <hr />
           <CardForm add = {this.addCard}/>
-          <Cards cardsArray={this.state.cards} />
+          <Cards cards={this.state.cards}/>
         </Container>
       </div>
     );

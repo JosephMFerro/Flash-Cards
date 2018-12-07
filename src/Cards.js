@@ -1,14 +1,26 @@
 import React from 'react';
 import Card from './Card';
-// import {Button, Segment} from 'semantic-ui-react';
 
+class Cards extends React.Component {
+  renderCards = (cards) => {
+    return cards.map( card => <Card key={card.id} {...card} remove={this.removeCard} /> );
+  };
 
-const Cards = ({ cardsArray }) => (
- <ul>
-  {cardsArray.map(card => (
-    <Card key={card.id} {...card} />
-  ))};
- </ul>
-);
+  removeCard = (id) => {
+    const cards = this.state.cards.filter( card => {
+      if (card.id !== id)
+        return card;
+    })
+    this.setState({ cards, });
+  };
+
+  render() {
+    return (
+      <div>
+         {this.renderCards()}
+      </div>
+    )
+  };
+};
 
 export default Cards;
